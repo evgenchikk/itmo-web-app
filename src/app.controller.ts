@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Redirect, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -9,15 +9,43 @@ export class AppController {
   //   return this.appService.getHello();
   // }
 
-  @Get()
+  @Get('/')
+  @Redirect('index.html')
+  getRoot() {}
+
+  @Get('/index.html')
   @Render('index')
-  root() {
-    return { message: 'Hello world!' };
+  getIndex() {
+    return {};
   }
 
   @Get('page.html')
-  @Render('page.hbs')
+  @Render('page')
   getPage() {
+    return {};
+  }
+
+  @Get('plants.html')
+  @Render('plants')
+  getPlants() {
+    return {};
+  }
+
+  @Get('dhtml.html')
+  @Render('dhtml')
+  getDhtml() {
+    return {};
+  }
+
+  @Get('promise.html')
+  @Render('promise')
+  getPromise() {
+    return {};
+  }
+
+  @Get('libusing.html')
+  @Render('libusing')
+  getLibusing() {
     return {};
   }
 }
