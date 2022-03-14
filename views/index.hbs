@@ -5,38 +5,11 @@
 	<meta charset="utf-8"/>
 	<meta name="author" content="Belonogov Evgeny"/>
 	<meta name="description" content="This page can be used as a portfolio"/>
-	<link rel="stylesheet" type="text/css" href="styles/main.css">
-  <script src="scripts/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/main.css">
+  <script src="/scripts/script.js"></script>
 </head>
 <body>
-  <div id="nav-icon3" class="pushmenu" data-title="MENU">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <nav class="sidebar">
-    <div class="text d-flex p-2">
-      <h4>МЕНЮ САЙТА</h4>
-      <div id="nav-icon3" class="pushmenu opened">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>	
-    </div>
-    <div class="menu-main-menu-container">
-      <ul id="menu-main-menu">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="./src/page.html">Галерея фотографий</a></li>
-        <li><a href="./src/plants.html">Таблица</a></li>
-        <li><a href="./src/dhtml.html">Страница с DHTML</a></li>
-        <li><a href="./src/promise.html">Страница с Promise</a></li>
-        <li><a href="./src/libusing.html">Библиотека CodeMirror</a></li>
-      </ul>
-    </div>
-  </nav>    
-  <div class="hidden-overley"></div>
+  {{> menu }}
 
 
 	<header>
@@ -237,24 +210,7 @@ XXZZ..ZZ.ZZYYYYYYYZZZZ..ZZYYY.X          YYYYYYYYYY.....Y..ZY..ZYYZZ..ZXX
       <p><a title="Schedule" href="./src/plants.html">Страница с информацией об однодольных и двудольных растениях</a></p>
     </section>
 	</main>
-	<footer>
-    <p>Опубликовано: <time datetime="2021-10-10T08:23:11+03:00">10 октября</time></p>
-		<p><a title="Go to vk.com" href="https://www.vk.com/evgeny_belonogov">Ссылка на VK</a></p>
-		<!-- <p><a title="Go" href="./src/page.html">Перейти к изображению</a></p> -->
-    <div class ="advertisement">
-      <marquee direction="right" scrolldelay="500">Здесь могла быть ваша реклама</marquee>
-      <p>РЕКЛАМА</p>
-    </div>
-    
-    <p id="loadingtime"></p>
-    <script>
-      var d = new Date();
-      var day = new Array("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
-      var month = new Array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря");
-      
-      document.write("<p align=\"center\"><time>" + day[d.getDay()] + " " + d.getDate() + " " + month[d.getMonth()]
-      + " " + d.getFullYear() + " г." + "</time></p>");
-    </script>
-	</footer>
+
+  {{> footer }}
 </body>
 </html>
