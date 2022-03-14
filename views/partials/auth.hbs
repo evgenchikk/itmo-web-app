@@ -1,0 +1,12 @@
+<div class="authorization">
+    <p>Статус авторизации:</p> 
+        {{#if authStatus}}
+            <p>авторизован как {{ user }} (молодец)</p>
+            <a href="/logout.html">Выйти</a>
+        {{else}}
+            <p>не авторизован</p>
+            <div class="authLink">
+                <a href="/login.html">Авторизоваться</a>
+            </div>
+        {{/if}}
+</div>

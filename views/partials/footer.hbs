@@ -1,18 +1,17 @@
 <footer>
-    <p>Опубликовано: <time datetime="2021-10-10T08:23:11+03:00">10 октября</time></p>
 	<p><a title="Go to vk.com" href="https://www.vk.com/evgeny_belonogov">Ссылка на VK</a></p>
-    <div class ="advertisement">
-      <marquee direction="right" scrolldelay="500">Здесь могла быть ваша реклама</marquee>
-      <p>РЕКЛАМА</p>
-    </div>
+  <div class ="advertisement">
+    <marquee direction="right" scrolldelay="500">Здесь могла быть ваша реклама</marquee>
+    <p>РЕКЛАМА</p>
+  </div>
     
-    <p id="loadingtime"></p>
-    <script>
-      var d = new Date();
-      var day = new Array("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
-      var month = new Array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря");
-      
-      document.write("<p align=\"center\"><time>" + day[d.getDay()] + " " + d.getDate() + " " + month[d.getMonth()]
-      + " " + d.getFullYear() + " г." + "</time></p>");
-    </script>
+  <p id="loadingtime"></p>
+  <script>
+    const d = new Date();
+    const day = new Array("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
+    const month = new Array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря");
+    
+    document.write("<p align=\"center\"><time>" + day[d.getDay()] + " " + d.getDate() + " " + month[d.getMonth()]
+    + " " + d.getFullYear() + " г." + "</time></p>");
+  </script>
 </footer>
