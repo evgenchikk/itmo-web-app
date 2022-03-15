@@ -1,7 +1,9 @@
 var loadingTime = new Date().getTime();
 
 window.addEventListener('load', function() {
-    document.getElementById('loadingtime').textContent = "Время загрузки страницы: " + ((new Date).getTime() - loadingTime) +  " ms (client)";
+	loadingTimeTag = document.getElementById('loadingtime');
+	serverResponseTime = loadingTimeTag.textContent;
+    loadingTimeTag.textContent = `Время загрузки страницы: ${(new Date().getTime()) - loadingTime} ms (client) ${serverResponseTime} ms (server)`;
 }, false);
 
 

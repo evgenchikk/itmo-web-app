@@ -1,9 +1,12 @@
-import { Controller, Get, Redirect, Render } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Redirect, Render, UseInterceptors } from '@nestjs/common';
+import { AppService, ServerResponseTimeInterceptor } from './app.service';
+
 
 @Controller()
+@UseInterceptors(ServerResponseTimeInterceptor)
 export class AppController {
   constructor(private readonly appService: AppService) {}
+
   // @Get()
   // getHello(): string {
   //   return this.appService.getHello();
@@ -18,9 +21,9 @@ export class AppController {
   getIndex() {
     return {
       title: 'Portfolio Belonogov Evgeny M33122',
-      metaDescription: 'This page can be used as a portfolio',
-      authStatus: true,
-      user: 'huy'
+      etaDescription: 'This page can be used as a portfolio',
+      authStatus: false,
+      serverResponseTime: String(this.appService.getServerResponseTime())
     };
   }
 
@@ -29,7 +32,8 @@ export class AppController {
   getPage() {
     return {
       title: 'Photo gallery',
-      metaDescription: 'This page contains photo'
+      metaDescription: 'This page contains photo',
+      serverResponseTime: String(this.appService.getServerResponseTime())
     };
   }
 
@@ -38,7 +42,8 @@ export class AppController {
   getPlants() {
     return {
       title: 'Plants info',
-      metaDescription: 'This page contains information about plants'
+      metaDescription: 'This page contains information about plants',
+      serverResponseTime: String(this.appService.getServerResponseTime())
     };
   }
 
@@ -47,7 +52,8 @@ export class AppController {
   getDhtml() {
     return {
       title: 'DHTML',
-      metaDescription: 'This page contains dynamic html (DHTML)'
+      metaDescription: 'This page contains dynamic html (DHTML)',
+      serverResponseTime: String(this.appService.getServerResponseTime())
     };
   }
 
@@ -56,7 +62,8 @@ export class AppController {
   getPromise() {
     return {
       title: 'Promise',
-      metaDescription: 'This page is for \'promise\''
+      metaDescription: 'This page is for \'promise\'',
+      serverResponseTime: String(this.appService.getServerResponseTime())
     };
   }
 
@@ -65,7 +72,8 @@ export class AppController {
   getLibusing() {
     return {
       title: 'CodeMirror',
-      metaDescription: 'CodeMirror'
+      metaDescription: 'CodeMirror',
+      serverResponseTime: String(this.appService.getServerResponseTime())
     };
   }
 
@@ -74,7 +82,8 @@ export class AppController {
   getLogin() {
     return {
       title: 'Login',
-      metaDescription: 'Login'
+      metaDescription: 'Login',
+      serverResponseTime: String(this.appService.getServerResponseTime())
     };
   }
 }
