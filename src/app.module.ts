@@ -1,30 +1,21 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Connection } from 'typeorm';
+import { UsersModule } from './users/users.module';
+import { CommentsModule } from './comments/comments.module';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppService, TypeOrmConfigService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
-  // imports: [
-  //   TypeOrmModule.forRoot({
-  //     type: 'postgres',
-  //     host: 'ec2-52-212-228-71.eu-west-1.compute.amazonaws.com',
-  //     port: 5432,
-  //     username: 'olvcokibhopyhg',
-  //     password: '9b022e704563ff04340071260efbe27b9b00b9aeadf8daa71b0c44a731c24007',
-  //     database: 'dmlcspum8g9su',
-  //     entities: [],
-  //     synchronize: true,
-  //     ssl: {
-  //       rejectUnauthorized: false
-  //     }
-  //   }
-  // )],
-  imports: [TypeOrmModule.forRoot()],
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+      useClass: TypeOrmConfigService    
+    }), UsersModule, CommentsModule],
   controllers: [AppController],
   providers: [AppService]
 })
 export class AppModule {
-  constructor(private connection: Connection) {}
+  // constructor(private connection: Connection) {}
 }

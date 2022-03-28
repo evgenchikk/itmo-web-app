@@ -1,6 +1,7 @@
 import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm'
 
 
 @Injectable()
@@ -20,5 +21,26 @@ export class ServerResponseTimeInterceptor implements NestInterceptor {
       .pipe(map( () => ({ 
         serverResponseTime: Date.now() - time
       })));
+  }
+}
+
+
+@Injectable()
+export class TypeOrmConfigService implements TypeOrmOptionsFactory {
+  createTypeOrmOptions(): TypeOrmModuleOptions {
+    var config = require('pg-connection-string').parse(process.env.DATABASE_URL);
+    return {
+        type: 'postgres',
+        host: config.host,
+        port: config.port,
+        username: config.user,
+        password: config.password,
+        database: config.database,
+        entities: ['dist/**/*.entity{ .ts,.js}'],
+        synchronize: true,
+        ssl: {
+            rejectUnauthorized: false
+        }
+    };
   }
 }

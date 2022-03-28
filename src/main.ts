@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { AppModule } from './app.module';
 
@@ -12,11 +11,11 @@ async function bootstrap() {
 
 
   const hbs = require('hbs');
-  const connection_str = 'postgres://olvcokibhopyhg:9b022e704563ff04340071260efbe27b9b00b9aeadf8daa71b0c44a731c24007@ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/dmlcspum8g9su';
   
-  var parse = require('pg-connection-string').parse;
-  var config = parse(process.env.DATABASE_URL == undefined ? connection_str : process.env.DATABASE_URL);
-  console.log(Object.keys(config));
+  // var parse = require('pg-connection-string').parse;
+  // console.log(process.env.DATABASE_URL);
+  // var config = parse(process.env.DATABASE_URL);
+  // console.log(Object.keys(config));
 
   // const { Client } = require('pg');
   // const client = new Client({
