@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PasswordsService } from './Passwords.service';
-import { PasswordsController } from './Passwords.controller';
+import { PasswordsService } from './passwords.service';
+import { PasswordsController } from './passwords.controller';
 import { Password } from './password.entity';
 
 
