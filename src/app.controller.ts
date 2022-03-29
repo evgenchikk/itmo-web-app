@@ -9,7 +9,7 @@ export class AppController {
 
   @Get('/')
   @Redirect('index.html')
-  getRoot() {}
+  // getRoot() {}
 
   @Get('/index.html')
   @Render('index')
@@ -17,7 +17,7 @@ export class AppController {
     return {
       title: 'Portfolio Belonogov Evgeny M33122',
       metaDescription: 'This page can be used as a portfolio',
-      authStatus: false
+      authStatus: false,
     };
   }
 

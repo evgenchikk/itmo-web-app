@@ -19,7 +19,7 @@ async function bootstrap() {
 
   // const { Client } = require('pg');
   // const client = new Client({
-  //   connectionString: 'postgres://olvcokibhopyhg:9b022e704563ff04340071260efbe27b9b00b9aeadf8daa71b0c44a731c24007@ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/dmlcspum8g9su',
+  //   connectionString: '...',
   //   ssl: {
   //     rejectUnauthorized: false
   //   }
@@ -33,13 +33,11 @@ async function bootstrap() {
   //   client.end();
   // });
 
-
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
 
   hbs.registerPartials(join(__dirname, '..', 'views/partials'))
-
   await app.listen(process.env.PORT == undefined ? 3000 : process.env.PORT);
 }
 bootstrap();

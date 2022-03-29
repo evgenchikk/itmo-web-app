@@ -1,7 +1,10 @@
 import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm'
+import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm';
+// import { User } from './models/users/user.entity';
+// import { Comment } from './models/comments/comment.entity';
+// import { Password } from './models/passwords/password.entity';
 
 
 @Injectable()
@@ -36,7 +39,9 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
         username: config.user,
         password: config.password,
         database: config.database,
-        entities: ['dist/**/*.entity{ .ts,.js}'],
+        // entities: ['dist/**/*.entity{ .ts,.js}'],
+        // entities: [User, Comment, Password],
+        autoLoadEntities: true,
         synchronize: true,
         ssl: {
             rejectUnauthorized: false
