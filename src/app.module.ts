@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
-import { UsersModule } from './models/users/users.module';
-import { CommentsModule } from './models/comments/comments.module';
-import { PasswordsModule } from './models/passwords/passwords.module';
+
+import { UsersModule } from './users/users.module';
+import { CommentsModule } from './comments/comments.module';
+import { PasswordsModule } from './passwords/passwords.module';
 import { AppController } from './app.controller';
 import { AppService, TypeOrmConfigService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
+
 
 
 @Module({

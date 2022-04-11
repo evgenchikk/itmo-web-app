@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Password } from '../passwords/password.entity';
-import { Comment } from '../comments/comment.entity'
+import { Comment } from '../comments/comment.entity';
 
 
 @Entity('Users')

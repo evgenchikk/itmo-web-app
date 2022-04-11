@@ -9,7 +9,7 @@ export class AppController {
 
   @Get('/')
   @Redirect('index.html')
-  // getRoot() {}
+  getRoot() {}
 
   @Get('/index.html')
   @Render('index')
