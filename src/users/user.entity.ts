@@ -2,12 +2,14 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany
 import { ApiProperty } from '@nestjs/swagger';
 import { Password } from '../passwords/password.entity';
 import { Comment } from '../comments/comment.entity';
+import { CreatePasswordDto } from 'src/passwords/dto/create-password.dto';
 
 
 @Entity('Users')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
+
 
   @ApiProperty({
     example: 'Ivan',
@@ -16,6 +18,7 @@ export class User {
   @Column()
   name: string;
 
+
   @ApiProperty({
     example: 'Ivanov',
     description: 'User\'s surname'
@@ -23,12 +26,14 @@ export class User {
   @Column()
   surname: string;
 
+
   @ApiProperty({
     example: 'superivan',
     description: 'User\'s unique nickname for login'
   })
   @Column()
   login: string;
+
 
   @ApiProperty({
     example: 'true',
@@ -44,6 +49,7 @@ export class User {
   @OneToOne(() => Password)
   @JoinColumn()
   password: Password;
+
 
   @ApiProperty({
     description: 'User\'s comments'

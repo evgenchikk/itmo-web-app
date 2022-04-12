@@ -11,9 +11,10 @@ export class AppController {
 
 
   @ApiOperation({ summary: 'get the main HTML page' })
+  @ApiResponse({ status: 200, description: 'OK' })
   @ApiResponse({ status: 308, description: 'redirect to the main page (index.html)' })
   @Get('/')
-  @Redirect('index.html')
+  @Redirect('/index.html', 308)
   getRoot() {}
 
 
@@ -32,7 +33,7 @@ export class AppController {
 
   @ApiOperation({ summary: 'get page.html' })
   @ApiResponse({ status: 200, description: 'page.html is got' })
-  @Get('page.html')
+  @Get('/page.html')
   @Render('page')
   getPage() {
     return {
@@ -45,7 +46,7 @@ export class AppController {
 
   @ApiOperation({ summary: 'get plants.html' })
   @ApiResponse({ status: 200, description: 'plants.html is got' })
-  @Get('plants.html')
+  @Get('/plants.html')
   @Render('plants')
   getPlants() {
     return {
@@ -58,7 +59,7 @@ export class AppController {
 
   @ApiOperation({ summary: 'get DHTML.html' })
   @ApiResponse({ status: 200, description: 'DHTML.html is got' })
-  @Get('dhtml.html')
+  @Get('/dhtml.html')
   @Render('dhtml')
   getDhtml() {
     return {
@@ -71,7 +72,7 @@ export class AppController {
 
   @ApiOperation({ summary: 'get promise.html' })
   @ApiResponse({ status: 200, description: 'promise.html is got' })
-  @Get('promise.html')
+  @Get('/promise.html')
   @Render('promise')
   getPromise() {
     return {
@@ -84,7 +85,7 @@ export class AppController {
 
   @ApiOperation({ summary: 'get libusing.html' })
   @ApiResponse({ status: 200, description: 'page.html is got' })
-  @Get('libusing.html')
+  @Get('/libusing.html')
   @Render('libusing')
   getLibusing() {
     return {
@@ -97,7 +98,7 @@ export class AppController {
 
   @ApiOperation({ summary: 'get login.html' })
   @ApiResponse({ status: 200, description: 'login.html is got' })
-  @Get('login.html')
+  @Get('/login.html')
   @Render('login')
   getLogin() {
     return {

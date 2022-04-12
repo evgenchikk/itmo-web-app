@@ -8,11 +8,10 @@ export class Comment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  // @ApiProperty({ 
-  //   description: 'The user who\'s the author of this comment'
-  // })
+  
   @ManyToOne(() => User, user => user.comments)
   user: User;
+
 
   @ApiProperty({ 
     example: 'Lorem ipsum', 
