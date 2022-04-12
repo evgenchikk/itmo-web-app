@@ -1,16 +1,24 @@
 import { Controller, Get, Redirect, Render, UseInterceptors } from '@nestjs/common';
 import { AppService, ServerResponseTimeInterceptor } from './app.service';
+import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 
 
+@ApiTags('HTML pages')
 @Controller()
 @UseInterceptors(ServerResponseTimeInterceptor)
 export class AppController {
   constructor(private readonly appService: AppService) {};
 
+
+  @ApiOperation({ summary: 'get the main HTML page' })
+  @ApiResponse({ status: 308, description: 'redirect to the main page (index.html)' })
   @Get('/')
   @Redirect('index.html')
   getRoot() {}
 
+
+  @ApiOperation({ summary: 'get the main HTML page' })
+  @ApiResponse({ status: 200, description: 'the main page (index.html) is got' })
   @Get('/index.html')
   @Render('index')
   getIndex() {
@@ -21,6 +29,9 @@ export class AppController {
     };
   }
 
+
+  @ApiOperation({ summary: 'get page.html' })
+  @ApiResponse({ status: 200, description: 'page.html is got' })
   @Get('page.html')
   @Render('page')
   getPage() {
@@ -31,6 +42,9 @@ export class AppController {
     };
   }
 
+
+  @ApiOperation({ summary: 'get plants.html' })
+  @ApiResponse({ status: 200, description: 'plants.html is got' })
   @Get('plants.html')
   @Render('plants')
   getPlants() {
@@ -41,6 +55,9 @@ export class AppController {
     };
   }
 
+
+  @ApiOperation({ summary: 'get DHTML.html' })
+  @ApiResponse({ status: 200, description: 'DHTML.html is got' })
   @Get('dhtml.html')
   @Render('dhtml')
   getDhtml() {
@@ -51,16 +68,22 @@ export class AppController {
     };
   }
 
+
+  @ApiOperation({ summary: 'get promise.html' })
+  @ApiResponse({ status: 200, description: 'promise.html is got' })
   @Get('promise.html')
   @Render('promise')
   getPromise() {
     return {
       title: 'Promise',
-      metaDescription: 'This page is for \'promise\'',
+      metaDescription: 'This page is for promise',
       authStatus: false
     };
   }
 
+
+  @ApiOperation({ summary: 'get libusing.html' })
+  @ApiResponse({ status: 200, description: 'page.html is got' })
   @Get('libusing.html')
   @Render('libusing')
   getLibusing() {
@@ -71,6 +94,9 @@ export class AppController {
     };
   }
 
+
+  @ApiOperation({ summary: 'get login.html' })
+  @ApiResponse({ status: 200, description: 'login.html is got' })
   @Get('login.html')
   @Render('login')
   getLogin() {
