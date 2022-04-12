@@ -8,7 +8,7 @@ export class Comment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  
+
   @ManyToOne(() => User, user => user.comments)
   user: User;
 

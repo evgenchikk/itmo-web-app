@@ -2,7 +2,6 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany
 import { ApiProperty } from '@nestjs/swagger';
 import { Password } from '../passwords/password.entity';
 import { Comment } from '../comments/comment.entity';
-import { CreatePasswordDto } from 'src/passwords/dto/create-password.dto';
 
 
 @Entity('Users')
@@ -13,7 +12,8 @@ export class User {
 
   @ApiProperty({
     example: 'Ivan',
-    description: 'User\'s name'
+    description: 'User\'s name',
+    required: true
   })
   @Column()
   name: string;
@@ -21,7 +21,8 @@ export class User {
 
   @ApiProperty({
     example: 'Ivanov',
-    description: 'User\'s surname'
+    description: 'User\'s surname',
+    required: true
   })
   @Column()
   surname: string;
@@ -29,7 +30,8 @@ export class User {
 
   @ApiProperty({
     example: 'superivan',
-    description: 'User\'s unique nickname for login'
+    description: 'User\'s unique nickname for login',
+    required: true
   })
   @Column()
   login: string;
@@ -37,14 +39,16 @@ export class User {
 
   @ApiProperty({
     example: 'true',
-    description: 'Online/not online status'
+    description: 'Online/not online status',
+    required: false
   })
   @Column()
   isOnline: boolean;
 
 
   @ApiProperty({
-    description: 'User\'s password'
+    description: 'User\'s password',
+    required: true
   })
   @OneToOne(() => Password)
   @JoinColumn()
@@ -52,7 +56,8 @@ export class User {
 
 
   @ApiProperty({
-    description: 'User\'s comments'
+    description: 'User\'s comments',
+    required: false
   })
   @OneToMany(() => Comment, comments => comments.user)
   comments: Comment[];

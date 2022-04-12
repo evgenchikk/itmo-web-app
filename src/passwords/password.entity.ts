@@ -13,7 +13,8 @@ export class Password {
   
   
   @ApiProperty({
-    description: 'user\'s password'
+    description: 'user\'s password',
+    required: true
   })
   @Column()
   password: string;

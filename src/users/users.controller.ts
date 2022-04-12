@@ -13,7 +13,6 @@ export class UsersController {
     @ApiOperation({ summary: 'create new user' })
     @ApiResponse({ status: 201, description: 'created' })
     @ApiResponse({ status: 400, description: 'bad request' })
-    @ApiResponse({ status: 401, description: 'not authorized' })
     @ApiResponse({ status: 403, description: 'forbidden' })
     @ApiResponse({ status: 501, description: 'not implemented' })
     @Post()
