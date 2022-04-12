@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Password } from './password.entity';
@@ -17,10 +17,13 @@ export class PasswordsService {
   // }
 
   create(createUserDto: CreatePasswordDto): Promise<Password> {
-    const password = new Password();
-    password.password = createUserDto.password;
+    throw new NotImplementedException();
 
-    return this.passwordsRepository.save(password);
+    // const password = new Password();
+    
+    // password.password = createUserDto.password;
+
+    // return this.passwordsRepository.save(password);
   }
 
   findOne(id: number): Promise<Password> {

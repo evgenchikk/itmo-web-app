@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Comment } from './comment.entity';
@@ -13,12 +13,14 @@ export class CommentsService {
   ) {}
 
   create(createCommentDto: CreateCommentDto): Promise<Comment> {
-    const comment = new Comment();
+    throw new NotImplementedException();
 
-    comment.user = createCommentDto.user;
-    comment.comment = createCommentDto.comment;
+    // const comment = new Comment();
+    
+    // comment.user = createCommentDto.user;
+    // comment.comment = createCommentDto.comment;
 
-    return this.commentsRepository.save(comment);
+    // return this.commentsRepository.save(comment);
   }
 
   findAll(): Promise<Comment[]> {

@@ -6,9 +6,9 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateCommentDto {
     @IsInstance(User)
     @ApiProperty()
-    user: User;
+    readonly user: User;
 
     @IsString()
     @ApiProperty({ example: 'Lorem Ipsum' })
-    comment: string;
+    readonly comment: string;
 }

@@ -8,26 +8,26 @@ export class CreateUserDto {
     @ApiProperty({
         example: 'Ivan'
     })
-    name: string;
+    readonly name: string;
 
 
     @IsString()
     @ApiProperty({
         example: 'Ivanov'
     })
-    surname: string;
+    readonly surname: string;
 
 
     @IsString()
     @ApiProperty({
         example: 'superivan'
     })
-    login: string;
+    readonly login: string;
 
 
     @IsInstance(Password)
     @ApiProperty({
         example: 'qwerty'
     })
-    password: Password;
+    readonly password: Password;
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -13,12 +13,14 @@ export class UsersService {
   ) {}
 
   create(createUserDto: CreateUserDto): Promise<User> {
-    const user = new User();
-    user.name = createUserDto.name;
-    user.surname = createUserDto.surname;
-    user.password = createUserDto.password;
+    throw new NotImplementedException();
+    
+    // const user = new User();
+    // user.name = createUserDto.name;
+    // user.surname = createUserDto.surname;
+    // user.password = createUserDto.password;
 
-    return this.usersRepository.save(user);
+    // return this.usersRepository.save(user);
   }
 
   findAll(): Promise<User[]> {

@@ -2,9 +2,6 @@ import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nes
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm';
-// import { User } from './models/users/user.entity';
-// import { Comment } from './models/comments/comment.entity';
-// import { Password } from './models/passwords/password.entity';
 
 
 @Injectable()

@@ -7,5 +7,5 @@ export class CreatePasswordDto {
     @ApiProperty({
         example: 'qwerty'
     })
-    password: string;
+    readonly password: string;
 }
