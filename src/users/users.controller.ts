@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
@@ -38,9 +38,39 @@ export class UsersController {
     @ApiResponse({ status: 401, description: 'not authorized' })
     @ApiResponse({ status: 403, description: 'forbidden' })
     @ApiResponse({ status: 501, description: 'not implemented' })
-    @Get(':id')
-    async findOne(@Param('id') id: number): Promise<User> {
-      return await this.usersService.findOne(id);
+    @Get('id/:id')
+    async findOneById(@Param('id') id: string): Promise<User> {
+      return await this.usersService.findOneById(id);
+    }
+
+
+    @ApiOperation({ summary: 'get user by name' })
+    @ApiResponse({ status: 200, description: 'user found' })
+    @ApiResponse({ status: 204, description: 'no content'})
+    @ApiResponse({ status: 401, description: 'not authorized' })
+    @ApiResponse({ status: 403, description: 'forbidden' })
+    @ApiResponse({ status: 501, description: 'not implemented' })
+    @Get('name/:name')
+    async findByName(@Param('name') name: string): Promise<User[]> {
+      const users = await this.usersService.findByName(name);
+      
+      // if (users == []) {
+      //   throw new NotFoundException('No users found');
+      // }
+
+      return users; 
+    }
+
+
+    @ApiOperation({ summary: 'get user by login' })
+    @ApiResponse({ status: 200, description: 'user found' })
+    @ApiResponse({ status: 204, description: 'no content'})
+    @ApiResponse({ status: 401, description: 'not authorized' })
+    @ApiResponse({ status: 403, description: 'forbidden' })
+    @ApiResponse({ status: 501, description: 'not implemented' })
+    @Get('login/:login')
+    async findOneByLogin(@Param('login') login: string): Promise<User> {
+      return await this.usersService.findOneByLogin(login.toLowerCase());
     }
 
 
@@ -50,7 +80,7 @@ export class UsersController {
     @ApiResponse({ status: 401, description: 'not authorized' })
     @ApiResponse({ status: 403, description: 'forbidden' })
     @ApiResponse({ status: 501, description: 'not implemented' })
-    @Delete(':id')
+    @Delete(':id/delete')
     async remove(@Param('id') id: number): Promise<void> {
       return await this.usersService.remove(id);
     }

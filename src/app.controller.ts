@@ -1,4 +1,4 @@
-import { Controller, Get, Redirect, Render, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Redirect, Render, UseInterceptors, HttpCode } from '@nestjs/common';
 import { AppService, ServerResponseTimeInterceptor } from './app.service';
 import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 
@@ -14,6 +14,7 @@ export class AppController {
   @ApiResponse({ status: 200, description: 'OK' })
   @ApiResponse({ status: 308, description: 'redirect to the main page (index.html)' })
   @Get('/')
+  @HttpCode(308)
   @Redirect('/index.html', 308)
   getRoot() {}
 

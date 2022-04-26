@@ -13,14 +13,14 @@ export class CommentsService {
   ) {}
 
   create(createCommentDto: CreateCommentDto): Promise<Comment> {
-    throw new NotImplementedException();
+    // throw new NotImplementedException();
 
-    // const comment = new Comment();
+    const comment = new Comment();
     
-    // comment.user = createCommentDto.user;
-    // comment.comment = createCommentDto.comment;
+    comment.user_id = createCommentDto.user_id;
+    comment.comment = createCommentDto.comment;
 
-    // return this.commentsRepository.save(comment);
+    return this.commentsRepository.save(comment);
   }
 
   findAll(): Promise<Comment[]> {

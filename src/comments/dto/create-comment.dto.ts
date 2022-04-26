@@ -1,12 +1,12 @@
 import { User } from '../../users/user.entity';
-import { IsString, IsInstance } from 'class-validator';
+import { IsString, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 
 export class CreateCommentDto {
-    @IsInstance(User)
-    @ApiProperty()
-    readonly user: User;
+    @IsNumber()
+    @ApiProperty({ example: 1 })
+    readonly user_id: number;
 
     @IsString()
     @ApiProperty({ example: 'Lorem Ipsum' })

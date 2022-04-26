@@ -6,7 +6,7 @@ import { Comment } from '../comments/comment.entity';
 
 @Entity('Users')
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
 
@@ -37,28 +37,28 @@ export class User {
   login: string;
 
 
-  @ApiProperty({
-    example: 'true',
-    description: 'Online/not online status',
-    required: false
-  })
-  @Column()
-  isOnline: boolean;
+  // @ApiProperty({
+  //   example: 'true',
+  //   description: 'Online/not online status',
+  //   required: false,
+  // })
+  // @Column()
+  // isOnline: boolean;
 
 
-  @ApiProperty({
-    description: 'User\'s password',
-    required: true
-  })
-  @OneToOne(() => Password)
-  @JoinColumn()
-  password: Password;
+  // @ApiProperty({
+  //   description: 'User\'s password',
+  //   required: true
+  // })
+  // @OneToOne(() => Password)
+  // @JoinColumn()
+  // password: Password;
 
 
   @ApiProperty({
     description: 'User\'s comments',
     required: false
   })
-  @OneToMany(() => Comment, comments => comments.user)
-  comments: Comment[];
+  @OneToMany(() => Comment, comment => comment.id)
+  comments_ids: number[];
 }

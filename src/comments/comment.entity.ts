@@ -5,12 +5,12 @@ import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('Comments')
 export class Comment {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
 
-  @ManyToOne(() => User, user => user.comments)
-  user: User;
+  @ManyToOne(() => User, user => user.id)
+  user_id: number;
 
 
   @ApiProperty({ 

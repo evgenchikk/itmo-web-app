@@ -25,9 +25,9 @@ export class CreateUserDto {
     readonly login: string;
 
 
-    @IsInstance(Password)
-    @ApiProperty({
-        example: 'qwerty'
-    })
-    readonly password: Password;
+    // @IsInstance(Password)
+    // @ApiProperty({
+    //     example: 'qwerty'
+    // })
+    // readonly password: Password;
 }
