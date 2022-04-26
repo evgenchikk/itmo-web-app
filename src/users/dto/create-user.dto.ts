@@ -1,4 +1,3 @@
-import { Password } from "../../passwords/password.entity";
 import { IsString, IsInstance } from 'class-validator';
 import { ApiProperty } from "@nestjs/swagger";
 
