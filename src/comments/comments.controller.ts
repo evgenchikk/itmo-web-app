@@ -1,7 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { Comment } from './comment.entity';
-import { User } from '../users/user.entity';
 import { CommentsService } from './comments.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
@@ -40,21 +39,21 @@ export class CommentsController {
     @ApiResponse({ status: 401, description: 'not authorized' })
     @ApiResponse({ status: 403, description: 'forbidden' })
     @ApiResponse({ status: 501, description: 'not implemented' })
-    @Get(':id')
-    async findOne(@Param('id') id: number): Promise<Comment> {
-        return await this.commentsService.findOne(id);
+    @Get('id/:id')
+    async findOneBtId(@Param('id') id: number): Promise<Comment> {
+        return await this.commentsService.findOneById(id);
     }
 
 
-    @ApiOperation({ summary: 'get comments by user' })
+    @ApiOperation({ summary: 'get comments by user id' })
     @ApiResponse({ status: 200, description: 'comments found', type: Comment })
     @ApiResponse({ status: 204, description: 'no content'})
     @ApiResponse({ status: 401, description: 'not authorized' })
     @ApiResponse({ status: 403, description: 'forbidden' })
     @ApiResponse({ status: 501, description: 'not implemented' })
-    @Get(':user')
-    async findByUser(@Param('user') user: User): Promise<Comment> {
-        return await this.commentsService.findByUser(user);
+    @Get('user/:id')
+    async findByUserId(@Param('id') user_id: number): Promise<Comment[]> {
+        return await this.commentsService.findByUserId(user_id);
     }
 
 
@@ -64,7 +63,7 @@ export class CommentsController {
     @ApiResponse({ status: 401, description: 'not authorized' })
     @ApiResponse({ status: 403, description: 'forbidden' })
     @ApiResponse({ status: 501, description: 'not implemented' })
-    @Delete(':id')
+    @Delete(':id/delete')
     async remove(@Param('id') id: number): Promise<void> {
         return await this.commentsService.remove(id);
     }

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, NotFoundException } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
@@ -52,13 +52,7 @@ export class UsersController {
     @ApiResponse({ status: 501, description: 'not implemented' })
     @Get('name/:name')
     async findByName(@Param('name') name: string): Promise<User[]> {
-      const users = await this.usersService.findByName(name);
-      
-      // if (users == []) {
-      //   throw new NotFoundException('No users found');
-      // }
-
-      return users; 
+      return await this.usersService.findByName(name);
     }
 
 

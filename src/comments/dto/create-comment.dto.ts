@@ -1,4 +1,3 @@
-import { User } from '../../users/user.entity';
 import { IsString, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 

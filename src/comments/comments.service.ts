@@ -1,4 +1,4 @@
-import { Injectable, NotImplementedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Comment } from './comment.entity';
@@ -13,13 +13,10 @@ export class CommentsService {
   ) {}
 
   create(createCommentDto: CreateCommentDto): Promise<Comment> {
-    // throw new NotImplementedException();
-
     const comment = new Comment();
-    
     comment.user_id = createCommentDto.user_id;
     comment.comment = createCommentDto.comment;
-
+    
     return this.commentsRepository.save(comment);
   }
 
@@ -27,12 +24,12 @@ export class CommentsService {
     return this.commentsRepository.find();
   }
 
-  findOne(id: number): Promise<Comment> {
+  findOneById(id: number): Promise<Comment> {
     return this.commentsRepository.findOne(id);
   }
 
-  findByUser(user: User): Promise<Comment> {
-    return this.commentsRepository.findOne(user);
+  findByUserId(user_id: number): Promise<Comment[]> {
+    return this.commentsRepository.find({ user_id: user_id });
   }
 
   async remove(id: number): Promise<void> {
