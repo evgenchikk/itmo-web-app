@@ -7,6 +7,7 @@ import { CommentsModule } from './comments/comments.module';
 import { PasswordsModule } from './passwords/passwords.module';
 import { AppController } from './app.controller';
 import { AppService, TypeOrmConfigService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -14,7 +15,7 @@ import { AppService, TypeOrmConfigService } from './app.service';
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService    
-    }), UsersModule, CommentsModule, PasswordsModule],
+    }), UsersModule, CommentsModule, PasswordsModule, AuthModule],
   controllers: [AppController],
   providers: [AppService]
 })
