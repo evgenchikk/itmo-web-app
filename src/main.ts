@@ -4,6 +4,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { join } from 'path';
 import { AppModule } from './app.module';
+import supertokens from 'supertokens-node';
 
 
 async function bootstrap() {
@@ -15,6 +16,12 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
   app.useGlobalPipes(new ValidationPipe());
+
+  app.enableCors({
+    origin: ['http://localhost:3000'],
+    allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
+    credentials: true,
+  });
 
   hbs.registerPartials(join(__dirname, '..', 'views/partials'));
 
