@@ -5,6 +5,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { join } from 'path';
 import { AppModule } from './app.module';
 import supertokens from 'supertokens-node';
+import { SupertokensExceptionFilter } from './auth/auth.filter';
 
 
 async function bootstrap() {
@@ -22,6 +23,8 @@ async function bootstrap() {
     allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
     credentials: true,
   });
+
+  app.useGlobalFilters(new SupertokensExceptionFilter());
 
   hbs.registerPartials(join(__dirname, '..', 'views/partials'));
 

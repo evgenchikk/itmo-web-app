@@ -1,6 +1,10 @@
-import { Controller, Get, Redirect, Render, UseInterceptors, HttpCode } from '@nestjs/common';
+import { Controller, Get, Redirect, Render, UseInterceptors, HttpCode, UseGuards } from '@nestjs/common';
 import { AppService, ServerResponseTimeInterceptor } from './app.service';
 import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+
+import { SessionContainer } from "supertokens-node/recipe/session";
+import { AuthGuard } from './auth/auth.guard';
+import { Session } from './auth/session.decorator';
 
 
 @ApiTags('HTML pages')
