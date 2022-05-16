@@ -2,6 +2,8 @@
 <html lang="ru">
 <head>
     {{> header this }}
+
+    <script src="/scripts/login.js"></script>
 </head>
 <body>
     {{> menu }}
@@ -9,12 +11,12 @@
     <div class="form_auth_block">
         <div class="form_auth_block_content">
             <p class="form_auth_block_head_text">Авторизация</p>
-            <form class="form_auth_style" action="#" method="post">
-                <label>Введите Ваш имейл</label>
-                <input type="email" name="auth_email" placeholder="Email" required>
-                <label>Введите Ваш пароль</label>
-                <input type="password" name="auth_pass" placeholder="Password" required>
-                <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
+            <form name="auth_form" class="form_auth_style" action="login.js">
+                <label>Email</label>
+                <input type="email" id="email" name="auth_email" placeholder="Email" required>
+                <input type="password" id="password" name="auth_pass" placeholder="Password" required>
+                <label>Password</label>
+                <button class="form_auth_button" type="button" onClick="submitAuthData()" name="form_auth_submit">Войти</button>
             </form>
         </div>
     </div>

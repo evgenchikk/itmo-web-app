@@ -14,11 +14,9 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     ConfigModule.forRoot(),
     AuthModule.forRoot({
-      // try.supertokens.com is for demo purposes. Replace this with the address of your core instance (sign up on supertokens.com), or self host a core.
-      connectionURI: 'https://226bcb11d05511ec8a0e81e1e702a5c3-us-east-1.aws.supertokens.io:3572',
-      apiKey: 'QrXNcng2M5uxrVLFdQJScfX9WKM8b9',
+      connectionURI: process.env.SuperTokensConnectionURI,
+      apiKey: process.env.SuperTokensAPIKey,
       appInfo: {
-        // Learn more about this on https://supertokens.com/docs/emailpassword/appinfo
         appName: "my-backend-project",
         apiDomain: "http://localhost:3000",
         websiteDomain: "http://localhost:3000",

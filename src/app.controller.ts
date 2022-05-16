@@ -1,6 +1,6 @@
 import { Controller, Get, Redirect, Render, UseInterceptors, HttpCode, UseGuards } from '@nestjs/common';
 import { AppService, ServerResponseTimeInterceptor } from './app.service';
-import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiResponse, ApiOperation, ApiCookieAuth } from '@nestjs/swagger';
 
 import { SessionContainer } from "supertokens-node/recipe/session";
 import { AuthGuard } from './auth/auth.guard';
@@ -37,10 +37,12 @@ export class AppController {
 
 
   @ApiOperation({ summary: 'get page.html' })
+  @ApiCookieAuth()
   @ApiResponse({ status: 200, description: 'page.html is got' })
   @Get('/page.html')
+  @UseGuards(AuthGuard)
   @Render('page')
-  getPage() {
+  getPage(@Session() session: SessionContainer) {
     return {
       title: 'Photo gallery',
       metaDescription: 'This page contains photo',
