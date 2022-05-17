@@ -39,7 +39,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
         // entities: ['dist/**/*.entity{ .ts,.js}'],
         // entities: [User, Comment, Password],
         autoLoadEntities: true,
-        // synchronize: true,
+        synchronize: true,
         ssl: {
             rejectUnauthorized: false
         }
