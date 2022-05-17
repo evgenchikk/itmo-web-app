@@ -18,8 +18,8 @@ import { AuthModule } from './auth/auth.module';
       apiKey: process.env.SuperTokensAPIKey,
       appInfo: {
         appName: "my-backend-project",
-        apiDomain: "http://localhost:3000",
-        websiteDomain: "http://localhost:3000",
+        apiDomain: "https://evgeny-backend-itmo.herokuapp.com",
+        websiteDomain: "https://evgeny-backend-itmo.herokuapp.com",
         apiBasePath: "/auth",
         // websiteBasePath: "/auth/*",
       },

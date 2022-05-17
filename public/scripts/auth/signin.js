@@ -1,6 +1,6 @@
 async function submitSignInData() {
     await fetch(
-        'http://localhost:3000/auth/signin',
+      'https://evgeny-backend-itmo.herokuapp.com/auth/signin',
         {
             method: 'POST',
             headers: {

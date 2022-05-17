@@ -1,8 +1,6 @@
-const { TreeRepositoryNotSupportedError } = require("typeorm");
-
 function submitSignUpData() {
     fetch(
-        'http://localhost:3000/auth/signup',
+        'https://evgeny-backend-itmo.herokuapp.com/auth/signup',
         {
             method: 'POST',
             headers: {
@@ -25,7 +23,7 @@ function submitSignUpData() {
     .then(response => response.json())
     .then(response => {
         fetch(
-            'http://localhost:3000/users',
+            'https://evgeny-backend-itmo.herokuapp.com/users',
             {
                 method: 'POST',
                 headers: {
