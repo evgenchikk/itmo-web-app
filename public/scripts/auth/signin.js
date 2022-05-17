@@ -1,5 +1,5 @@
-function submitSignInData() {
-    fetch(
+async function submitSignInData() {
+    await fetch(
         'http://localhost:3000/auth/signin',
         {
             method: 'POST',
@@ -20,4 +20,6 @@ function submitSignInData() {
             })
         }
     )
+    // .then(response => response.json())
+    // .then(response => response.user.id);
 }

@@ -4,6 +4,9 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class CreateUserDto {
     @IsString()
+    readonly STUserid: string;
+
+    @IsString()
     @ApiProperty({
         example: 'Ivan'
     })

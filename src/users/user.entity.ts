@@ -9,6 +9,9 @@ export class User {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
+  @Column()
+  STUserid: string;
+
 
   @ApiProperty({
     example: 'Ivan',

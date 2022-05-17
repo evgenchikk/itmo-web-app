@@ -16,16 +16,16 @@ export class SupertokensService {
             },
             recipeList: [
                 EmailPassword.init({
-                    signUpFeature: {
-                        formFields: [{
-                          id: "name"
-                        }, {
-                          id: "age"
-                        }, {
-                          id: "country",
-                          optional: true
-                        }]
-                    }
+                    // signUpFeature: {
+                    //     formFields: [{
+                    //       id: "email"
+                    //     }, {
+                    //       id: "password"
+                    //     }, {
+                    //       id: "name",
+                    //       optional: true
+                    //     }]
+                    // }
                 }),
                 Session.init(),
             ],

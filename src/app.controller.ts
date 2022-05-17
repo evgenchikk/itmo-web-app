@@ -5,7 +5,6 @@ import { ApiTags, ApiResponse, ApiOperation, ApiCookieAuth } from '@nestjs/swagg
 import { SessionContainer } from "supertokens-node/recipe/session";
 import { AuthGuard } from './auth/auth.guard';
 import { Session } from './auth/session.decorator';
-import { deleteUser } from 'supertokens-node';
 
 
 @ApiTags('HTML pages')
@@ -39,11 +38,11 @@ export class AppController {
   @UseGuards(AuthGuard)
   @Render('index')
   getIndex(@Session() session: SessionContainer) {
-    deleteUser('db84ab2f-2f21-4ebe-b6bc-9d6e123b560e');
     return {
       title: 'Portfolio Belonogov Evgeny M33122',
       metaDescription: 'This page can be used as a portfolio',
       authStatus: !(session == undefined),
+      STUserid: session.getUserId().toString(),
     };
   }
 
@@ -59,6 +58,7 @@ export class AppController {
       title: 'Photo gallery',
       metaDescription: 'This page contains photo',
       authStatus: !(session == undefined),
+      STUserid: session.getUserId().toString(),
     };
   }
 
@@ -74,6 +74,7 @@ export class AppController {
       title: 'Plants info',
       metaDescription: 'This page contains information about plants',
       authStatus: !(session == undefined),
+      STUserid: session.getUserId().toString(),
     };
   }
 
@@ -89,6 +90,7 @@ export class AppController {
       title: 'DHTML',
       metaDescription: 'This page contains dynamic html (DHTML)',
       authStatus: !(session == undefined),
+      STUserid: session.getUserId().toString(),
     };
   }
 
@@ -104,6 +106,7 @@ export class AppController {
       title: 'Promise',
       metaDescription: 'This page is for promise',
       authStatus: !(session == undefined),
+      STUserid: session.getUserId().toString(),
     };
   }
 
@@ -119,6 +122,7 @@ export class AppController {
       title: 'CodeMirror',
       metaDescription: 'CodeMirror',
       authStatus: !(session == undefined),
+      STUserid: session.getUserId().toString(),
     };
   }
 

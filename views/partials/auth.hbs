@@ -1,8 +1,19 @@
 <div class="authorization">
     <script src="/scripts/auth/signout.js"></script>
+    {{#if STUserid}}
+        <script>
+            var username = undefined;
+            var STUserid = '{{ STUserid }}';
+            fetch(`/users/STUserid/${STUserid}`)
+                .then((response => response.json()))
+                .then((response) => {
+                    document.getElementById('p_with_username').textContent += response.name;
+                });
+        </script>
+    {{/if}}
     <p>Статус авторизации:</p> 
         {{#if authStatus }}
-            <p>авторизован</p>
+            <p id="p_with_username">авторизован как </p>
             <button onclick="submitSignOut()">Выйти</button>
         {{else}}
             <p>не авторизован</p>

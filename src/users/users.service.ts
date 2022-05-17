@@ -13,9 +13,8 @@ export class UsersService {
   ) {}
 
   create(createUserDto: CreateUserDto): Promise<User> {
-    // throw new NotImplementedException();
-    
     const user = new User();
+    user.STUserid = createUserDto.STUserid;
     user.name = createUserDto.name;
     user.surname = createUserDto.surname;
     user.login = createUserDto.login.toLowerCase();
@@ -31,6 +30,10 @@ export class UsersService {
 
   findOneById(id: string): Promise<User> {
     return this.usersRepository.findOne(id);
+  }
+
+  findOneBySTUserid(id: string): Promise<User> {
+    return this.usersRepository.findOne({ STUserid: id });
   }
 
   findByName(username: string): Promise<User[]> {

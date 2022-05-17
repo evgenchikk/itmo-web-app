@@ -44,6 +44,18 @@ export class UsersController {
       return await this.usersService.findOneById(id);
     }
 
+    @ApiOperation({ summary: 'get user by SuperTokens user id' })
+    @ApiResponse({ status: 200, description: 'user found' })
+    @ApiResponse({ status: 204, description: 'no content' })
+    @ApiResponse({ status: 400, description: 'bad request' })
+    @ApiResponse({ status: 401, description: 'not authorized' })
+    @ApiResponse({ status: 403, description: 'forbidden' })
+    @ApiResponse({ status: 501, description: 'not implemented' })
+    @Get('STUserid/:id')
+    async findOneBySTUserid(@Param('id') id: string): Promise<User> {
+      return await this.usersService.findOneBySTUserid(id);
+    }
+
 
     @ApiOperation({ summary: 'get user by name' })
     @ApiResponse({ status: 200, description: 'user found' })
