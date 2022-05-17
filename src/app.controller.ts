@@ -5,6 +5,7 @@ import { ApiTags, ApiResponse, ApiOperation, ApiCookieAuth } from '@nestjs/swagg
 import { SessionContainer } from "supertokens-node/recipe/session";
 import { AuthGuard } from './auth/auth.guard';
 import { Session } from './auth/session.decorator';
+import { deleteUser } from 'supertokens-node';
 
 
 @ApiTags('HTML pages')
@@ -15,6 +16,7 @@ export class AppController {
 
 
   @ApiOperation({ summary: 'get the main HTML page' })
+  @ApiCookieAuth()
   @ApiResponse({ status: 200, description: 'OK' })
   @ApiResponse({ status: 308, description: 'redirect to the main page (index.html)' })
   @Get('/')
@@ -31,11 +33,13 @@ export class AppController {
 
 
   @ApiOperation({ summary: 'get the main HTML page' })
+  @ApiCookieAuth()
   @ApiResponse({ status: 200, description: 'the main page (index.html) is got' })
   @Get('/index.html')
   @UseGuards(AuthGuard)
   @Render('index')
   getIndex(@Session() session: SessionContainer) {
+    deleteUser('db84ab2f-2f21-4ebe-b6bc-9d6e123b560e');
     return {
       title: 'Portfolio Belonogov Evgeny M33122',
       metaDescription: 'This page can be used as a portfolio',
@@ -60,6 +64,7 @@ export class AppController {
 
 
   @ApiOperation({ summary: 'get plants.html' })
+  @ApiCookieAuth()
   @ApiResponse({ status: 200, description: 'plants.html is got' })
   @Get('/plants.html')
   @UseGuards(AuthGuard)
@@ -74,6 +79,7 @@ export class AppController {
 
 
   @ApiOperation({ summary: 'get DHTML.html' })
+  @ApiCookieAuth()
   @ApiResponse({ status: 200, description: 'DHTML.html is got' })
   @Get('/dhtml.html')
   @UseGuards(AuthGuard)
@@ -88,6 +94,7 @@ export class AppController {
 
 
   @ApiOperation({ summary: 'get promise.html' })
+  @ApiCookieAuth()
   @ApiResponse({ status: 200, description: 'promise.html is got' })
   @Get('/promise.html')
   @UseGuards(AuthGuard)
@@ -102,6 +109,7 @@ export class AppController {
 
 
   @ApiOperation({ summary: 'get libusing.html' })
+  @ApiCookieAuth()
   @ApiResponse({ status: 200, description: 'page.html is got' })
   @Get('/libusing.html')
   @UseGuards(AuthGuard)

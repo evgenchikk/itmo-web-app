@@ -435,14 +435,12 @@ body.sidebar-opened {
     padding: 10px;
     font-size: 20px;
     font-weight: 600;
-    /* background: #ffffff; */
     opacity: 0.7;
 }
 .form_auth_block label{
     display: block;
     text-align: center;
     padding: 10px;
-    /* background: #ffffff; */
     opacity: 0.7;
     font-weight: 600;
     margin-bottom: 10px;
@@ -464,9 +462,9 @@ input:focus {
 }
 .form_signin_button{
     display: block;
+    text-align: center;
     width: 80%;
     margin: 5%;
-    /* margin-top: 10px; */
     border-radius: 10px;
     height: 35px;
     border: none;
@@ -474,9 +472,9 @@ input:focus {
 }
 .form_signup_button{
     display: block;
+    text-align: center;
     width: 80%;
     margin: 5%;
-    /* margin-top: 10px; */
     border-radius: 10px;
     height: 35px;
     border: none;

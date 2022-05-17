@@ -15,7 +15,18 @@ export class SupertokensService {
                 apiKey: config.apiKey,
             },
             recipeList: [
-                EmailPassword.init(),
+                EmailPassword.init({
+                    signUpFeature: {
+                        formFields: [{
+                          id: "name"
+                        }, {
+                          id: "age"
+                        }, {
+                          id: "country",
+                          optional: true
+                        }]
+                    }
+                }),
                 Session.init(),
             ],
         });

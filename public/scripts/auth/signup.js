@@ -20,4 +20,18 @@ function submitSignUpData() {
             })
         }
     )
+    fetch(
+        'http://localhost:3000/users',
+        {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({
+                'name': document.auth_form.user_name.value,
+                'surname': document.auth_form.user_surname.value,
+                'login': document.auth_form.auth_email.value,
+            })
+        }
+    )
 }

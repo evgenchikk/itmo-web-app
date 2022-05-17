@@ -13,10 +13,14 @@
         <div class="form_auth_block_content">
             <p class="form_auth_block_head_text">Авторизация</p>
             <form name="auth_form" class="form_auth_style" action="login.js">
-                <label>Email</label>
+                <label>Email (*)</label>
                 <input type="email" id="email" name="auth_email" placeholder="Email" required>
-                <label>Password</label>
+                <label>Password (*)</label>
                 <input type="password" id="password" name="auth_pass" placeholder="Password" required>
+                <label>Name</label>
+                <input type="text" id="user_name" name="user_name" placeholder="Ivan">
+                <label>Surname</label>
+                <input type="text" id="user_surname" name="user_surname" placeholder="Ivanov">
                 <button class="form_signin_button" type="button" onClick="submitSignInData()" name="form_auth_submit">Sign in</button>
                 <button class="form_signup_button" type="button" onClick="submitSignUpData()" name="form_auth_submit">Sign up</button>
             </form>
