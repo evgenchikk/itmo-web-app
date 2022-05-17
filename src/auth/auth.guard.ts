@@ -9,10 +9,11 @@ export class AuthGuard implements CanActivate {
     const ctx = context.switchToHttp();
 
     let err = undefined;
+    const req = ctx.getRequest();
     const resp = ctx.getResponse();
-    // You can create an optional version of this by passing {sessionRequired: false} to verifySession
-    await verifySession()(
-      ctx.getRequest(),
+
+    await verifySession() (
+      req,
       resp,
       (res) => {
         err = res;

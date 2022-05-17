@@ -19,19 +19,27 @@ export class AppController {
   @ApiResponse({ status: 308, description: 'redirect to the main page (index.html)' })
   @Get('/')
   @HttpCode(308)
+  @UseGuards(AuthGuard)
   @Redirect('/index.html', 308)
-  getRoot() {}
+  getRoot(@Session() session: SessionContainer) {
+    return {
+      title: 'Portfolio Belonogov Evgeny M33122',
+      metaDescription: 'This page can be used as a portfolio',
+      authStatus: !(session == undefined),
+    };
+  };
 
 
   @ApiOperation({ summary: 'get the main HTML page' })
   @ApiResponse({ status: 200, description: 'the main page (index.html) is got' })
   @Get('/index.html')
+  @UseGuards(AuthGuard)
   @Render('index')
-  getIndex() {
+  getIndex(@Session() session: SessionContainer) {
     return {
       title: 'Portfolio Belonogov Evgeny M33122',
       metaDescription: 'This page can be used as a portfolio',
-      authStatus: false,
+      authStatus: !(session == undefined),
     };
   }
 
@@ -46,7 +54,7 @@ export class AppController {
     return {
       title: 'Photo gallery',
       metaDescription: 'This page contains photo',
-      authStatus: false
+      authStatus: !(session == undefined),
     };
   }
 
@@ -54,12 +62,13 @@ export class AppController {
   @ApiOperation({ summary: 'get plants.html' })
   @ApiResponse({ status: 200, description: 'plants.html is got' })
   @Get('/plants.html')
+  @UseGuards(AuthGuard)
   @Render('plants')
-  getPlants() {
+  getPlants(@Session() session: SessionContainer) {
     return {
       title: 'Plants info',
       metaDescription: 'This page contains information about plants',
-      authStatus: false
+      authStatus: !(session == undefined),
     };
   }
 
@@ -67,12 +76,13 @@ export class AppController {
   @ApiOperation({ summary: 'get DHTML.html' })
   @ApiResponse({ status: 200, description: 'DHTML.html is got' })
   @Get('/dhtml.html')
+  @UseGuards(AuthGuard)
   @Render('dhtml')
-  getDhtml() {
+  getDhtml(@Session() session: SessionContainer) {
     return {
       title: 'DHTML',
       metaDescription: 'This page contains dynamic html (DHTML)',
-      authStatus: false
+      authStatus: !(session == undefined),
     };
   }
 
@@ -80,12 +90,13 @@ export class AppController {
   @ApiOperation({ summary: 'get promise.html' })
   @ApiResponse({ status: 200, description: 'promise.html is got' })
   @Get('/promise.html')
+  @UseGuards(AuthGuard)
   @Render('promise')
-  getPromise() {
+  getPromise(@Session() session: SessionContainer) {
     return {
       title: 'Promise',
       metaDescription: 'This page is for promise',
-      authStatus: false
+      authStatus: !(session == undefined),
     };
   }
 
@@ -93,12 +104,13 @@ export class AppController {
   @ApiOperation({ summary: 'get libusing.html' })
   @ApiResponse({ status: 200, description: 'page.html is got' })
   @Get('/libusing.html')
+  @UseGuards(AuthGuard)
   @Render('libusing')
-  getLibusing() {
+  getLibusing(@Session() session: SessionContainer) {
     return {
       title: 'CodeMirror',
       metaDescription: 'CodeMirror',
-      authStatus: false
+      authStatus: !(session == undefined),
     };
   }
 
@@ -111,7 +123,6 @@ export class AppController {
     return {
       title: 'Login',
       metaDescription: 'Login',
-      authStatus: false
     };
   }
 }

@@ -20,13 +20,13 @@ import { AuthModule } from './auth/auth.module';
         appName: "my-backend-project",
         apiDomain: "http://localhost:3000",
         websiteDomain: "http://localhost:3000",
-        apiBasePath: "/auth/api",
-        websiteBasePath: "/auth/*",
+        apiBasePath: "/auth",
+        // websiteBasePath: "/auth/*",
       },
     }),
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService    
-    }), UsersModule, CommentsModule, PasswordsModule], // AuthModule],
+    }), UsersModule, CommentsModule, PasswordsModule],
   controllers: [AppController],
   providers: [AppService]
 })

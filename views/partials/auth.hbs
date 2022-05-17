@@ -1,8 +1,9 @@
 <div class="authorization">
+    <script src="/scripts/auth/signout.js"></script>
     <p>Статус авторизации:</p> 
-        {{#if authStatus}}
-            <p>авторизован как {{ user }} (молодец)</p>
-            <a href="/logout.html">Выйти</a>
+        {{#if authStatus }}
+            <p>авторизован</p>
+            <button onclick="submitSignOut()">Выйти</button>
         {{else}}
             <p>не авторизован</p>
             <div class="authLink">

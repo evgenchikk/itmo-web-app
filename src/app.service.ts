@@ -1,6 +1,6 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler, Session } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 
@@ -14,13 +14,13 @@ export class AppService {
 
 @Injectable()
 export class ServerResponseTimeInterceptor implements NestInterceptor {
-  intercept(context: ExecutionContext, next: CallHandler): Observable<{ serverResponseTime: Number }> { //| Promise<Observable<{ serverResponseTime: Number }>> {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<{ serverResponseTime: Number }> {
     const time = Date.now();
+    
     return next
       .handle()
-      .pipe(map( () => ({ 
-        serverResponseTime: Date.now() - time
-      })));
+      .pipe(tap( (data) => (data.serverResponseTime = Date.now() - time)
+      ));
   }
 }
 

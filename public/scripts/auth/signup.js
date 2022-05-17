@@ -1,10 +1,6 @@
-function submitAuthData() {
-    // console.log('submitAuthData()');
-    const login = document.auth_form.auth_email.value;
-    const pass = document.auth_form.auth_pass.value;
-
+function submitSignUpData() {
     fetch(
-        'http://localhost:3000/auth/api/signup',
+        'http://localhost:3000/auth/signup',
         {
             method: 'POST',
             headers: {
@@ -14,11 +10,11 @@ function submitAuthData() {
                 "formFields": [
                     {
                       "id": "email",
-                      "value": login,
+                      "value": document.auth_form.auth_email.value,
                     },
                     {
                       "id": "password",
-                      "value": pass
+                      "value": document.auth_form.auth_pass.value,
                     }
                   ]
             })

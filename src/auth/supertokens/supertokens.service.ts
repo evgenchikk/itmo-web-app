@@ -15,8 +15,8 @@ export class SupertokensService {
                 apiKey: config.apiKey,
             },
             recipeList: [
-              EmailPassword.init(),
-              Session.init(),
+                EmailPassword.init(),
+                Session.init(),
             ],
         });
     }
