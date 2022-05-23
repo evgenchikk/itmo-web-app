@@ -11,31 +11,26 @@ import { Socket, Server } from 'socket.io';
 
 @WebSocketGateway({
   cors: {
-    origin: '*',
+    origin: [`http://localhost:${process.env.PORT}`],
   },
 })
-export class WsGateway {//implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
-  @SubscribeMessage('message')
-  handleMessage(client: any, payload: any): string {
-    return 'Hello world!';
+export class WsGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+  @WebSocketServer() server: Server;
+
+  @SubscribeMessage('msgToServer')
+  handleMessage(client: Socket, payload: string): void {
+    this.server.emit('msgToClient', payload);
   }
 
-  // @WebSocketServer() server: Server;
+  afterInit(server: Server) {
 
-  // @SubscribeMessage('msgToServer')
-  // handleMessage(client: Socket, payload: string): void {
-  //   this.server.emit('msgToClient', payload);
-  // }
+  }
 
-  // afterInit(server: Server) {
+  handleDisconnect(client: Socket) {
 
-  // }
+  }
 
-  // handleDisconnect(client: Socket) {
+  handleConnection(client: Socket, ...args: any[]) {
 
-  // }
-
-  // handleConnection(client: Socket, ...args: any[]) {
-
-  // }
+  }
 }
