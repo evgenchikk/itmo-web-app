@@ -8,6 +8,7 @@ import { PasswordsModule } from './passwords/passwords.module';
 import { AppController } from './app.controller';
 import { AppService, TypeOrmConfigService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { WsModule } from './ws/ws.module';
 
 
 @Module({
@@ -18,15 +19,15 @@ import { AuthModule } from './auth/auth.module';
       apiKey: process.env.SuperTokensAPIKey,
       appInfo: {
         appName: "my-backend-project",
-        apiDomain: "https://evgeny-backend-itmo.herokuapp.com",
-        websiteDomain: "https://evgeny-backend-itmo.herokuapp.com",
+        apiDomain: "http://localhost:3000", //"https://evgeny-backend-itmo.herokuapp.com",
+        websiteDomain: "http://localhost:3000", //"https://evgeny-backend-itmo.herokuapp.com",
         apiBasePath: "/auth",
         // websiteBasePath: "/auth/*",
       },
     }),
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService    
-    }), UsersModule, CommentsModule, PasswordsModule],
+    }), UsersModule, CommentsModule, PasswordsModule, WsModule],
   controllers: [AppController],
   providers: [AppService]
 })
