@@ -19,8 +19,8 @@ import { WsModule } from './ws/ws.module';
       apiKey: process.env.SuperTokensAPIKey,
       appInfo: {
         appName: "my-backend-project",
-        apiDomain: "http://localhost:3000", //"https://evgeny-backend-itmo.herokuapp.com",
-        websiteDomain: "http://localhost:3000", //"https://evgeny-backend-itmo.herokuapp.com",
+        apiDomain: "https://evgeny-backend-itmo.herokuapp.com",
+        websiteDomain: "https://evgeny-backend-itmo.herokuapp.com",
         apiBasePath: "/auth",
         // websiteBasePath: "/auth/*",
       },

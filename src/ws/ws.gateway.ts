@@ -11,11 +11,13 @@ import { Socket, Server } from 'socket.io';
 
 @WebSocketGateway({
   cors: {
-    origin: [`http://localhost:${process.env.PORT}`],
+    origin: ['https://evgeny-backend-itmo.herokuapp.com'],
   },
 })
 export class WsGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
-  @WebSocketServer() server: Server;
+  @WebSocketServer() 
+  server: Server;
+
 
   @SubscribeMessage('msgToServer')
   handleMessage(client: Socket, payload: string): void {
